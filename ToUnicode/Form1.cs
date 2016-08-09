@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -48,9 +49,9 @@ namespace ToUnicode
                 double numericValue = get_char_code(item);
                 list.Add(numericValue);
                 string str = string.Format("{0}-{1}", item, numericValue);
-                listBox1.Items.Add(str); 
+                listBox1.Items.Add(str);
             }
-            if (list.Count>0)
+            if (list.Count > 0)
             {
                 toolStripStatusLabel1.Text = "生成成功";
 
@@ -69,5 +70,74 @@ namespace ToUnicode
             }
         }
 
+        private void BtnOpenFileDIalog_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            DialogResult result = fbd.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                TxtFolder.Text = fbd.SelectedPath;
+
+                List<string> listImages = new List<string>();
+
+                string[] files = Directory.GetFiles(fbd.SelectedPath, "*.png", SearchOption.AllDirectories);
+                ImageList imageList = new ImageList();
+                foreach (var item in files)
+                {
+                    listBox1.Items.Add(item);
+                    imageList.Images.Add(Path.GetFileNameWithoutExtension(item), Bitmap.FromFile(item));
+                }
+                listView1.SmallImageList = imageList;
+                listView1.LargeImageList = imageList;
+                foreach (var item in imageList.Images.Keys)
+                {
+                    listView1.Items.Add(new ListViewItem()
+                    {
+                        ImageKey = item,
+                        Name = item,
+                    });
+                }
+
+            }
+        }
+
+        private void btnGetBmfc_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "BmFont配置文件(*.bmfc)|*.bmfc";
+            DialogResult result = ofd.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                string filePath = ofd.FileName;
+                txtBmfc.Text = filePath;
+                string[] lines = File.ReadAllLines(filePath);
+
+                List<Entity.Bmfc> bmfcs = new List<Entity.Bmfc>();
+
+                Entity.Bmfc bmfc = null;
+                foreach (var item in lines)
+                {
+                    if (item.StartsWith("#"))
+                    {
+                        bmfc = new Entity.Bmfc();
+                        bmfc.GroupName = item;
+                        bmfcs.Add(bmfc);
+                    }
+                    else if (string.IsNullOrEmpty(item))
+                    {
+
+                    }
+                    else
+                    {
+                        if (bmfc != null)
+                        {
+                             
+                            bmfc.Propertys.Add(item);
+                        }
+                    }
+                }
+                
+            }
+        }
     }
 }
