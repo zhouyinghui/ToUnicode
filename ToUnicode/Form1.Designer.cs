@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
@@ -70,7 +71,7 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.statusStrip1);
             this.splitContainer1.Size = new System.Drawing.Size(622, 414);
-            this.splitContainer1.SplitterDistance = 375;
+            this.splitContainer1.SplitterDistance = 374;
             this.splitContainer1.TabIndex = 0;
             // 
             // splitContainer2
@@ -86,7 +87,7 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.listBox1);
-            this.splitContainer2.Size = new System.Drawing.Size(622, 375);
+            this.splitContainer2.Size = new System.Drawing.Size(622, 374);
             this.splitContainer2.SplitterDistance = 316;
             this.splitContainer2.TabIndex = 1;
             // 
@@ -100,8 +101,8 @@
             // splitContainer3.Panel1
             // 
             this.splitContainer3.Panel1.Controls.Add(this.splitContainer4);
-            this.splitContainer3.Size = new System.Drawing.Size(316, 375);
-            this.splitContainer3.SplitterDistance = 143;
+            this.splitContainer3.Size = new System.Drawing.Size(316, 374);
+            this.splitContainer3.SplitterDistance = 142;
             this.splitContainer3.TabIndex = 0;
             // 
             // splitContainer4
@@ -118,8 +119,8 @@
             // splitContainer4.Panel2
             // 
             this.splitContainer4.Panel2.Controls.Add(this.button1);
-            this.splitContainer4.Size = new System.Drawing.Size(316, 143);
-            this.splitContainer4.SplitterDistance = 114;
+            this.splitContainer4.Size = new System.Drawing.Size(316, 142);
+            this.splitContainer4.SplitterDistance = 113;
             this.splitContainer4.TabIndex = 0;
             // 
             // textBox1
@@ -128,7 +129,7 @@
             this.textBox1.Location = new System.Drawing.Point(0, 0);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(316, 114);
+            this.textBox1.Size = new System.Drawing.Size(316, 113);
             this.textBox1.TabIndex = 0;
             // 
             // button1
@@ -148,14 +149,14 @@
             this.listBox1.ItemHeight = 12;
             this.listBox1.Location = new System.Drawing.Point(0, 0);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(302, 375);
+            this.listBox1.Size = new System.Drawing.Size(302, 374);
             this.listBox1.TabIndex = 0;
             // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 13);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 14);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(622, 22);
             this.statusStrip1.TabIndex = 0;
@@ -173,6 +174,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(622, 414);
             this.Controls.Add(this.splitContainer1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "CharId提取器";
             this.Load += new System.EventHandler(this.Form1_Load);
